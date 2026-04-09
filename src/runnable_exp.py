@@ -18,13 +18,22 @@ llm = HuggingFaceEndpoint(
 
 model = ChatHuggingFace(llm=llm)
 
-prompt_1 = PromptTemplate(template="Write a one liner joke on {topic}",
-                          input_variables=["topic"])
+class JokeOutput(BaseModel):
+    text: str = Field(..., description="The joke text")
 
-parser = StrOutputParser()
+parser_1 = PydanticOutputParser(pydantic_object=JokeOutput)
+
+prompt_1 = PromptTemplate(template="Write a one liner joke on {topic}.\n{instructions}",
+                          input_variables=["topic"],
+                          partial_variables={"instructions": parser_1.get_format_instructions()})
+
+prompt_2 = PromptTemplate(template="Explain this joke {text}",
+                            input_variables=['text'])
+
+parser_2 = StrOutputParser()
 
 # chain = prompt_1 | model | parser
-chain = RunnableSequence(prompt_1, model, parser)
+chain = RunnableSequence(prompt_1, model, parser_1, prompt_2, model, parser_2)
 
 response = chain.invoke({"topic": "Madhya Pradesh"})
 print(response)
