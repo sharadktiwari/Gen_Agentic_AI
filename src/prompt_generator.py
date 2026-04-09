@@ -1,4 +1,5 @@
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
+from langchain_core.load import dumps
 
 template = PromptTemplate(
     template= """Please summarize the research paper titled "{paper_input}" """, # with the following specifications:
@@ -15,4 +16,5 @@ template = PromptTemplate(
     validate_template=True
     )
 
-template.save('template.json')
+with open('template.json', 'w') as f:
+    f.write(dumps(template))

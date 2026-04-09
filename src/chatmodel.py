@@ -1,13 +1,14 @@
 from langchain_huggingface import ChatHuggingFace, HuggingFacePipeline, HuggingFaceEndpoint
 from dotenv import load_dotenv
-from langchain.prompts import load_prompt
+from langchain_core.load import loads
 
 load_dotenv()
 
 # To Access LLM API's of HuggingFace
 llm = HuggingFaceEndpoint(
     # repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-    repo_id= "google/gemma-2-2b-it",
+    repo_id= "google/gemma-4-31B-it",
+    # repo_id= "google/gemma-2-2b-it",
     task="text-generation")
 
 # To Access Local LLM
@@ -25,7 +26,8 @@ llm = HuggingFaceEndpoint(
 
 model = ChatHuggingFace(llm=llm)
 
-template = load_prompt('template.json')
+with open('template.json', 'r') as f:
+    template = loads(f.read())
 
 # prompt = template.invoke({"paper_input": "Attention is all you need", "style_input": "Simple", "length_input": "Short"})
 

@@ -39,6 +39,7 @@ model = ChatHuggingFace(llm=llm)
 
 # response = chain.invoke({"country": "India"})
 
+##############################################################
 # schema = [
 #     ResponseSchema(name='fact_1', description='fact1 about prime minister'),
 #     ResponseSchema(name='fact_2', description='fact2 about prime minister'),
@@ -54,6 +55,8 @@ model = ChatHuggingFace(llm=llm)
 # chain = template | model | parser
 
 # response = chain.invoke({"country": "India"}) 
+
+################################################################
 
 class PrimeMinister(BaseModel):
     Name: str = Field(description="Name of prime minister")

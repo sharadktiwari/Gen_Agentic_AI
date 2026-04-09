@@ -18,7 +18,7 @@ llm = HuggingFaceEndpoint(
 model = ChatHuggingFace(llm=llm)
 
 ###################################################################################################
-# Simple Chain
+# Simple/Sequential Chain
 # prompt_1 = PromptTemplate(template="How many Tiger reserves are there in {state}?",
 #                           input_variables=["state"])
 
