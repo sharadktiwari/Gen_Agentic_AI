@@ -128,10 +128,12 @@ prompt2 = PromptTemplate(template="Summarise the following text\n {text}",
 def word_count(text):
     return len(text.split())
 
-report_chain = RunnableSequence(prompt1, model, parser)
+# report_chain = RunnableSequence(prompt1, model, parser)
+report_chain = prompt1 | model | parser
 
 conditional_chain = RunnableBranch(
-    (lambda x: word_count(x)>500, RunnableSequence(prompt2, model, parser)),
+    # (lambda x: word_count(x)>500, RunnableSequence(prompt2, model, parser)),
+    (lambda x: word_count(x)>500, prompt2 | model | parser),
     RunnablePassthrough()
     )
 
@@ -139,3 +141,9 @@ final_chain = RunnableSequence(report_chain, conditional_chain)
 
 response = final_chain.invoke({"topic": "Artificial Intelligence"})
 print(response)
+
+
+# LCEL
+###############################################################
+# RunnableSequence(prompt, model, parser) == prompt | model | parser
+# Going forward we will use LCEL for better readability and ease of use.

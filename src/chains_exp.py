@@ -90,7 +90,7 @@ chain = {
     "sentiment": sentiment_chain
     } | branch_chain
 
-response = sentiment_chain.invoke({"feedback": "This is a bad product."})
+response = chain.invoke({"feedback": "This is a bad product."})
 print(response)
 #######################################################################################################################
 # chain.get_graph().print_ascii()
