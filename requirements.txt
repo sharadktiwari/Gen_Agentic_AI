@@ -1,6 +1,7 @@
 langchain
 langchain-core
 langchain-huggingface
+langchain_community
 transformers
 huggingface-hub
 python-dotenv
@@ -10,3 +11,7 @@ torch
 accelerate
 sentence-transformers
 grandalf
+pypdf
+beautifulsoup4
+langchain-chroma
+wikipedia
