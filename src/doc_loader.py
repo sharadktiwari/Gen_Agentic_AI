@@ -1,7 +1,7 @@
 from langchain_community.document_loaders import TextLoader, PyPDFLoader, DirectoryLoader, WebBaseLoader, CSVLoader
 
 # Text Loader
-# loader = TextLoader("./src/text_example.txt")#, encoding="utf-8")
+# loader = TextLoader("./data/text_example.txt")#, encoding="utf-8")
 # docs = loader.load()
 
 # PDF Loaders
@@ -12,11 +12,11 @@ from langchain_community.document_loaders import TextLoader, PyPDFLoader, Direct
 # Want best structure exraction -> UnstructuredPDFLoader
 
 # Example -> PDF Loader
-# loader = PyPDFLoader("./src/Sharad Resume 4 years.pdf")
+# loader = PyPDFLoader("./data/books/Sharad Resume 4 years.pdf")
 # docs = loader.load()
 
 # Directory Loader
-# loader = DirectoryLoader(path="./src/books", glob="**/*.pdf", show_progress=True, loader_cls=PyPDFLoader)
+# loader = DirectoryLoader(path="./data/books", glob="**/*.pdf", show_progress=True, loader_cls=PyPDFLoader)
 # docs = loader.load() # Loads all PDFs at once in memory
 # docs = loader.lazy_load() # Loads PDFs one at a time when accessed
 
@@ -25,7 +25,7 @@ from langchain_community.document_loaders import TextLoader, PyPDFLoader, Direct
 # docs = loader.load()
 
 # CSV Loader
-loader = CSVLoader(file_path="./src/Social_Network_Ads.csv", encoding="utf-8")
+loader = CSVLoader(file_path="./data/Social_Network_Ads.csv", encoding="utf-8")
 docs = loader.load()
 
 for doc in docs:

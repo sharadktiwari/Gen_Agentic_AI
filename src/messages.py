@@ -26,7 +26,7 @@ chat_template = ChatPromptTemplate([
 
 chat_history = []
 
-with open("chat_history", 'r') as f:
+with open("chat_history.txt", 'r') as f:
     chat_history.extend(f.readlines())
 
 prompt = chat_template.invoke({'history': chat_history, 'query': "When I will get my refund?"})

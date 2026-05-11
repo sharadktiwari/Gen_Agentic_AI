@@ -15,7 +15,7 @@ from langchain_classic.retrievers.document_compressors import LLMChainExtractor
 # query = "Geopolitical history of India"
 
 # Chroma Retriever
-loader = PyPDFLoader("./src/books/Building Machine Learning Systems with Python - Second Edition.pdf")
+loader = PyPDFLoader("./data/books/Building Machine Learning Systems with Python - Second Edition.pdf")
 docs = loader.load()
 
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
@@ -23,10 +23,10 @@ embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-Mi
 # vector_store = Chroma.from_documents(embedding=embedding_model,
 #                                     documents=docs,
 #                                     collection_name="retriever_docs",
-#                                     persist_directory="./src/vector_store")
+#                                     persist_directory="./vector_store")
 vector_store = Chroma(embedding_function=embedding_model,
                     collection_name="retriever_docs",
-                    persist_directory="./src/vector_store")
+                    persist_directory="./vector_store")
 
 # Normal Search
 # retriever = vector_store.as_retriever(search_kwargs={"k": 2})

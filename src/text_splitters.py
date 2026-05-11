@@ -3,7 +3,7 @@ from langchain_text_splitters import CharacterTextSplitter, RecursiveCharacterTe
 from langchain_text_splitters import Language
 
 # Text Loader
-loader = TextLoader("./src/text_example.txt")#, encoding="utf-8")
+loader = TextLoader("./data/text_example.txt")#, encoding="utf-8")
 docs = loader.load()
 text = docs[0].page_content
 
